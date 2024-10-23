@@ -34,13 +34,8 @@ def confirmar():
     success, frame = camera.read()
     if success:
         # Codifica a imagem em formato JPEG
-        #_, buffer = cv2.imencode('.jpg', frame)
-        #image_data = buffer.tobytes()
-
-        # Aqui você chamaria sua função de IA
-        # Exemplo: response = ia.confirmar(image_data)
-        # Para a demonstração, vamos simular uma resposta
-        response = ia.leitura(frame)
+        _, img_encoded = cv2.imencode('.jpg', frame)
+        response = ia.leitura(img_encoded.tobytes())
         
         # Supondo que a resposta seja um JSON com um campo 'message'
         json_response = response
